@@ -1,6 +1,6 @@
 <?php
 
-namespace __ONYX_Namespace\Controllers\Home;
+namespace BraveRats\Controllers\Home;
 
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;

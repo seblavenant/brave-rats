@@ -1,6 +1,6 @@
 <?php
 
-namespace __ONYX_Namespace\Controllers\Home;
+namespace BraveRats\Controllers\Home;
 
 use Onyx\Traits;
 use Symfony\Component\HttpFoundation\Response;

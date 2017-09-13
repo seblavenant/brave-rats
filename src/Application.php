@@ -1,6 +1,6 @@
 <?php
 
-namespace __ONYX_Namespace;
+namespace BraveRats;
 
 use Silex\Provider\SessionServiceProvider;
 use Onyx\Providers;

@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace __ONYX_Namespace;
+namespace BraveRats;
 
 use Puzzle\Configuration;
 use Pimple\Container;
@@ -23,6 +23,7 @@ class Console
 
         $this->app->add(new RouteLister(new Silex($container)));
         $this->app->add(new Console\HelloWorld());
+        $this->app->add(new Console\Game());
     }
 
     public function run(): void
