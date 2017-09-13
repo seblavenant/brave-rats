@@ -17,4 +17,9 @@ class Ambassador implements Character
     {
         return 'Ambassadeur';
     }
+
+    public function fight(Character $character): ?Character
+    {
+        return null;
+    }
 }

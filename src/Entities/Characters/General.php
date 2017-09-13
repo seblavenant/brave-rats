@@ -6,7 +6,7 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class General implements Character
+class General extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
@@ -17,4 +17,15 @@ class General implements Character
     {
         return 'General';
     }
+
+    public function fight(Character $character): ?Character
+    {
+        if($this->crossFightDone)
+        {
+            return $this->crossedFight($character);
+        }
+
+        return null;
+    }
+
 }

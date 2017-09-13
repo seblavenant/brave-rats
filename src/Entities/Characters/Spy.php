@@ -17,4 +17,9 @@ class Spy implements Character
     {
         return 'Espion';
     }
+
+    public function fight(Character $character): ?Character
+    {
+
+    }
 }

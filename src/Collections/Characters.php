@@ -9,7 +9,7 @@ use BraveRats\Entities\Characters\Musician;
 use BraveRats\Exceptions\Characters\CharacterNotFound;
 use BraveRats\Entities\Characters\Spy;
 use BraveRats\Entities\Characters\Ambassador;
-use BraveRats\Entities\Characters\Assasin;
+use BraveRats\Entities\Characters\Assassin;
 use BraveRats\Entities\Characters\General;
 use BraveRats\Entities\Characters\Prince;
 use BraveRats\Entities\Characters\Princess;
@@ -24,7 +24,7 @@ class Characters implements \IteratorAggregate
     {
         $this->characters = [
             new Ambassador(),
-            new Assasin(),
+            new Assassin(),
             new General(),
             new Musician(),
             new Prince(),

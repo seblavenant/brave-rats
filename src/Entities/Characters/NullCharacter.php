@@ -17,4 +17,10 @@ class NullCharacter implements Character
     {
         return 'poney';
     }
+
+    public function fight(Character $character): ?Character
+    {
+
+    }
+
 }

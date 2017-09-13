@@ -6,7 +6,7 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Princess implements Character
+class Princess extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
@@ -18,8 +18,18 @@ class Princess implements Character
         return 'Princesse';
     }
 
-    public function getNumber(): int
+    public function fight(Character $character): ?Character
     {
-        return 1;
+        if($character instanceof Prince)
+        {
+            return $this;
+        }
+
+        if(! $this->crossFightDone)
+        {
+            return $this->crossedFight($character);
+        }
+
+        return null;
     }
 }

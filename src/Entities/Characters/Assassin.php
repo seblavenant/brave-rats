@@ -6,21 +6,30 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Prince extends AbstractCharacter implements Character
+class Assassin extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
-        return 7;
+        return 3;
     }
 
     public function label(): string
     {
-        return 'Prince';
+        return 'Assasin';
     }
 
     public function fight(Character $character): ?Character
     {
-        if($character instanceof Princess)
+        if($character instanceof Prince)
+        {
+            return $character;
+        }
+
+        if($this->strength() < $character->strength())
+        {
+            return $this;
+        }
+        elseif($this->strength() > $character->strength())
         {
             return $character;
         }
@@ -32,4 +41,5 @@ class Prince extends AbstractCharacter implements Character
 
         return null;
     }
+
 }
