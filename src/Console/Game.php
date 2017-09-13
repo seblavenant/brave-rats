@@ -39,6 +39,8 @@ class Game extends Command
             $nextRound = $round->run($player1, $player2);
             $this->outputRoundResult($output, $round);
 
+            $output->writeln(sprintf('%s : %s | %s : %s', $player1->getName(), $player1->getScore(), $player2->getName(), $player2->getScore()));
+
             $round = $nextRound;
         }
 
@@ -49,7 +51,7 @@ class Game extends Command
     {
         $helper = $this->getHelper('question');
         $question = new ChoiceQuestion(
-            'Please select your character',
+            sprintf('%s : Please select your character', $player->getName()),
             $player->getAvailableCharacters()->toArray()
         );
 

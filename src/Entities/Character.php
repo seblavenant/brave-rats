@@ -9,5 +9,7 @@ interface Character
     public function strength(): int;
 
     public function label(): string;
+
+    public function increaseStrength($strength);
 }
 

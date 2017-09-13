@@ -6,11 +6,11 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Wizard implements Character
+class Wizard extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
-        return 5;
+        return 5 + $this->strenghtIncreaser;
     }
 
     public function label(): string

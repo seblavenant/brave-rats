@@ -6,7 +6,7 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class NullCharacter implements Character
+class NullCharacter extends AbstractCharacter implements Character
 {
     public function strength(): int
     {

@@ -12,18 +12,27 @@ class Player
         $points,
         $currentCharacter,
         $availableCharacters,
-        $name;
+        $name,
+        $strengthIncreaseNumber;
 
     public function __construct(string $name)
     {
         $this->name = $name;
         $this->points = 0;
         $this->availableCharacters = new Characters();
+        $this->strengthIncreaseNumber = 0;
+    }
+
+    public function increaseCharacterStrength(int $strength): void
+    {
+        $this->strengthIncreaseNumber = $strength;
     }
 
     public function choose(string $characterLabel): void
     {
         $character = $this->availableCharacters->getCharacterFromLabel($characterLabel);
+        $character->increaseStrength($this->strengthIncreaseNumber);
+        $this->strengthIncreaseNumber = 0;
 
         $this->currentCharacter = $character;
 
@@ -49,12 +58,17 @@ class Player
 
     public function hasWinGame()
     {
-        return $this->points > 1;
+        return $this->points >= 4;
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getScore(): int
+    {
+        return $this->points;
     }
 }
 

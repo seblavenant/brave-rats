@@ -6,11 +6,11 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Ambassador implements Character
+class Ambassador extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
-        return 4;
+        return 4 + $this->strenghtIncreaser;
     }
 
     public function label(): string

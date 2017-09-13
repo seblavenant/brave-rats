@@ -6,11 +6,11 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Spy implements Character
+class Spy extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
-        return 2;
+        return 2 + $this->strenghtIncreaser;
     }
 
     public function label(): string

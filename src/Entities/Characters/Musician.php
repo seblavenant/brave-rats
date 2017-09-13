@@ -6,11 +6,11 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Musician implements Character
+class Musician extends AbstractCharacter implements Character
 {
     public function strength(): int
     {
-        return 0;
+        return 0 + $this->strenghtIncreaser;
     }
 
     public function label(): string
