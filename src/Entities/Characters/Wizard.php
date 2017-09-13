@@ -6,15 +6,15 @@ namespace BraveRats\Entities\Characters;
 
 use BraveRats\Entities\Character;
 
-class Musician implements Character
+class Wizard implements Character
 {
     public function strength(): int
     {
-        return 0;
+        return 5;
     }
 
     public function label(): string
     {
-        return 'Musicien';
+        return 'Magicien';
     }
 }

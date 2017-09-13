@@ -8,6 +8,11 @@ use BraveRats\Entities\Character;
 
 class NullCharacter implements Character
 {
+    public function strength(): int
+    {
+        return 0;
+    }
+
     public function label(): string
     {
         return 'poney';

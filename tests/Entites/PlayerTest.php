@@ -11,7 +11,7 @@ class PlayerTest extends TestCase
 {
     public function testChoose()
     {
-        $player = new Player();
+        $player = new Player('poney');
 
         $character = new Musician();
 
@@ -25,7 +25,7 @@ class PlayerTest extends TestCase
      */
     public function testChooseInvalidCharacter()
     {
-        $player = new Player();
+        $player = new Player('licorne');
 
         $player->choose('pouet');
     }

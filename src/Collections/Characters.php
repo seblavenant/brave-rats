@@ -7,6 +7,13 @@ namespace BraveRats\Collections;
 use BraveRats\Entities\Character;
 use BraveRats\Entities\Characters\Musician;
 use BraveRats\Exceptions\Characters\CharacterNotFound;
+use BraveRats\Entities\Characters\Spy;
+use BraveRats\Entities\Characters\Ambassador;
+use BraveRats\Entities\Characters\Assasin;
+use BraveRats\Entities\Characters\General;
+use BraveRats\Entities\Characters\Prince;
+use BraveRats\Entities\Characters\Princess;
+use BraveRats\Entities\Characters\Wizard;
 
 class Characters implements \IteratorAggregate
 {
@@ -16,7 +23,14 @@ class Characters implements \IteratorAggregate
     public function __construct()
     {
         $this->characters = [
+            new Ambassador(),
+            new Assasin(),
+            new General(),
             new Musician(),
+            new Prince(),
+            new Princess(),
+            new Wizard(),
+            new Spy(),
         ];
     }
 
@@ -54,8 +68,10 @@ class Characters implements \IteratorAggregate
         $characters = [];
         foreach($this->characters as $character)
         {
-            $characters[] = $character->label();
+            $characters[$character->strength()] = $character->label();
         }
+
+        ksort($characters);
 
         return $characters;
     }

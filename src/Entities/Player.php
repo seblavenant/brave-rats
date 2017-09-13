@@ -9,11 +9,15 @@ use BraveRats\Collections\Characters;
 class Player
 {
     private
+        $points,
         $currentCharacter,
-        $availableCharacters;
+        $availableCharacters,
+        $name;
 
-    public function __construct()
+    public function __construct(string $name)
     {
+        $this->name = $name;
+        $this->points = 0;
         $this->availableCharacters = new Characters();
     }
 
@@ -34,6 +38,23 @@ class Player
     public function getAvailableCharacters(): Characters
     {
         return $this->availableCharacters;
+    }
+
+    public function win(Round $round): self
+    {
+        $this->points += $round->getPoint();
+
+        return $this;
+    }
+
+    public function hasWinGame()
+    {
+        return $this->points > 1;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 }
 

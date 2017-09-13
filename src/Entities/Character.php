@@ -6,6 +6,8 @@ namespace BraveRats\Entities;
 
 interface Character
 {
-   public function label(): string;
+    public function strength(): int;
+
+    public function label(): string;
 }
 

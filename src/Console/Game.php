@@ -10,7 +10,6 @@ use BraveRats\Entities\Player;
 use BraveRats\Entities\Round;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use BraveRats\Entities\Character;
-use BraveRats\Collections\Characters;
 
 class Game extends Command
 {
@@ -24,12 +23,11 @@ class Game extends Command
     {
         $game = new GameEntity();
 
-        $player1 = new Player();
-        $player2 = new Player();
+        $player1 = new Player('Yargs');
+        $player2 = new Player('AppleWood');
         $game->addPlayers($player1, $player2);
 
         $round = new Round();
-
         while($game->ended() === false)
         {
             $character = $this->promptCharacterChoice($input, $output, $player1);
@@ -38,10 +36,13 @@ class Game extends Command
             $character = $this->promptCharacterChoice($input, $output, $player2);
             $player2->choose($character);
 
-            $round->run($player1, $player2);
+            $nextRound = $round->run($player1, $player2);
+            $this->outputRoundResult($output, $round);
 
-            $round = new Round();
+            $round = $nextRound;
         }
+
+        $this->outputGameResult($output, $game);
     }
 
     private function promptCharacterChoice(InputInterface $input, OutputInterface $output, Player $player): string
@@ -53,5 +54,29 @@ class Game extends Command
         );
 
         return $helper->ask($input, $output, $question);
+    }
+
+    private function outputRoundResult(OutputInterface $output, Round $round): void
+    {
+        if($round->getWinner() instanceof Player)
+        {
+            $output->writeln(sprintf('Round : %s won', $round->getWinner()->getName()));
+        }
+        else
+        {
+            $output->writeln('Round : draw');
+        }
+    }
+
+    private function outputGameResult(OutputInterface $output, GameEntity $game): void
+    {
+        if($game->getWinner() instanceof Player)
+        {
+            $output->writeln(sprintf('Game : %s won ..... \o/', $game->getWinner()->getName()));
+        }
+        else
+        {
+            $output->writeln('Game : draw');
+        }
     }
 }
